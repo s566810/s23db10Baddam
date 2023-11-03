@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  - var images = ["harvard.jpeg","northwest.jpg","princeton.jpg","stanford.jpg","yale.jpg"];
+  - for(i=0;i<3;i++) {
+     - var randomValue = Math.floor(Math.random()*5) ;
+     img(style="height:300px; width:300px;" src=`./images/${images[randomValue]}` alt=`img${images[randomValue]}`)
+  -}

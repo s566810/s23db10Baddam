@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to northwest missouri state university,missouri
+  button(type="button", class="btn btn-secondary" onclick="goFaster()") press me
+  div(id="faster") Increase the speed
+
+  script.
+    var mph = 20
+    var change = 1
+    function goFaster(){
+      mph = mph + change
+      change = change + 1
+      document.getElementById("faster").textContent = `MPH ${mph} with change ${change}` 
+    }
+
+  a(href='/schools') Click here to search for schools

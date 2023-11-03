@@ -1,0 +1,23 @@
+extends layout
+
+block content
+    h1= "Search results - school"
+    -
+        let results = [
+            {"school_name" : "Northwest", "school_location" : "Missouri", "school_courses": 12},
+            {"school_name" : "Princeton", "school_location" : "Newyork", "school_courses": 20},
+            {"school_name" : "Stanford", "school_location" : "California", "school_courses": 30}
+        ]
+
+    div(class="container-fluid")
+        div(class="row")
+            each item, index in results
+                div(class="col-sm-2") #{item.school_name}
+                div(class="col-sm-2") #{item.school_location}
+                div(class="col-sm-2") #{item.school_courses}
+                div(onclick=`buy(${index})`, class="btn btn-secondary" style="width:100px") Buy
+
+    script. 
+        function buy(index) {
+        alert(`You purchased item ${index + 1}`);
+     }
