@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  h1= title
+  - let schools=results
+  //- button.btn( class="btn-primary ml-1", onclick= destinationcreate) Create
+  div(class="container-fluid")
+  div(class="row m-1")
+    each school in schools
+      - let destinationdetail = `dispatch(\"/schools/detail/?id=${school._id}\")`
+      - let destinationcreate = `dispatchCreate(\"/schools/create\")`
+      - let destinationupdate = `dispatch(\"/schools/update?id=${school._id}\")`
+      div(class="col-ml-1 btn btn-light") #{school._id} - #{school.school_name} - #{school.school_location} - #{school.school_courses}
+
+      button.btn( class="btn-secondary ml-1", onclick= destinationdetail) Details 
+
+      button.btn( class="btn-primary ml-1", onclick= destinationcreate) Create
+
+      button.btn( class="btn-info ml-1", onclick= destinationupdate) Update
+
+  script. 
+    function dispatch(path){
+      window.location.href=path
+    }
+    function dispatchCreate(path){
+        window.location.href=path
+      }

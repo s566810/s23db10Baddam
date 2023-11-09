@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  h1(id="title")= title
+
+  if (toShow == null)
+    h2 No instance to update
+  else
+  - let schoolId = toShow._id
+  - let school_name = toShow.school_name
+  - let school_location = toShow.school_location
+  - let school_courses = toShow.school_courses
+  
+  div.row(class='mb-2')
+    div.mr-1 ID is
+    div(class='details') #{schoolId}
+  - let actionid = "/resource/school/" + schoolId
+  form(id='schoolForm', action= actionid, method="PUT")
+    div.form-group
+        label.schoolAttr(for='school_name') school_name
+        input#schoolNname(type='text', name='school_name', value= school_name )
+    div.form-group
+        label.schoolAttr(for='size') school_location
+        input#school_location(type='text', name='school_location', value= school_location )
+    div.form-group
+        label.schoolAttr(for='cost') school_courses
+        input#school_courses(type='number', name='school_courses', value= school_courses )
+    input(type="submit")

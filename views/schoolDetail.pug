@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    h1= title 
+    if (toShow == null)
+      h2 No instance to provide details
+    - let schoolId = toShow._id 
+    - let school_name = toShow.school_name 
+    - let school_location = toShow.school_location 
+    - let school_courses = toShow.school_courses 
+    div 
+      div.row 
+        div(class='schoolAttr mr-3') School ID is: 
+        div(class='details mr-3') #{schoolId} 
+      div.row 
+        div(class='schoolAttr mr-3') School_name is: 
+        div(class='details mr-3') #{school_name} 
+      div.row 
+        div(class='schoolAttr mr-3') School_location is: 
+        div(class='details mr-3') #{school_location} 
+      div.row 
+        div(class='schoolAttr mr-3') Total_Courses are: 
+        div(class='details mr-3') #{school_courses}

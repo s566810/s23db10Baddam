@@ -1,0 +1,16 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  form(id='schoolForm', action="/resource/school", method="POST") 
+    div.form-group 
+        label.schoolAttr(for='school_name') school_name 
+        input#school_name(type='text', name='school_name') 
+    div.form-group 
+        label.schoolAttr(for='school_location') school_location  
+        input#school_location(type='text', name='school_location') 
+    div.form-group 
+        label.schoolAttr(for='school_courses') school_courses  
+        input#school_courses(type='number', name='school_courses') 
+    input(type="submit")

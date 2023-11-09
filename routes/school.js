@@ -1,9 +1,12 @@
 var express = require('express');
+const school_controlers= require('../controllers/school');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('school', { title: 'Express' });
-});
-
+/* GET schools */
+router.get('/', school_controlers.school_view_all_Page );
+router.get("/detail", school_controlers.school_view_one_Page);
+router.get("/create", school_controlers.school_create_Page);
+router.get("/update", school_controlers.school_update_Page);
 module.exports = router;
+
+
+
