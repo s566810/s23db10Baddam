@@ -1,16 +1,34 @@
-extends layout 
- 
-block content 
-  h1= title 
- 
-  form(id='schoolForm', action="/resource/school", method="POST") 
-    div.form-group 
-        label.schoolAttr(for='school_name') school_name 
-        input#school_name(type='text', name='school_name') 
-    div.form-group 
-        label.schoolAttr(for='school_location') school_location  
-        input#school_location(type='text', name='school_location') 
-    div.form-group 
-        label.schoolAttr(for='school_courses') school_courses  
-        input#school_courses(type='number', name='school_courses') 
+extends layout
+
+block content
+  h1= title
+
+  form(id='schoolForm', action="/resource/school", method="POST")
+    div.form-group
+      label(for='school_name') school_name
+      input#school_name(type='text', name='school_name')
+    div.form-group
+      label(for='school_location') school_location
+      input#school_location(type='text', name='school_location')
+    div.form-group
+      label(for='school_courses') school_courses
+      input#school_courses(type='number', name='school_courses')
     input(type="submit")
+
+    script.
+      document.forms["schoolForm"].addEventListener('submit', (event) => {
+        event.preventDefault();
+        // TODO do something here to show the user that the form is being submitted
+        fetch(event.target.action, {
+          method: 'POST',
+          body: new URLSearchParams(new FormData(event.target))
+        }).then((resp) => {
+          return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+          alert("Save succeeded");
+          // TODO handle body
+        }).catch((error) => {
+          // TODO handle error
+          alert("Save failed " + error);
+        });
+      });
