@@ -2,6 +2,8 @@ extends layout
 
 block content
     h1= "Search results - school"
+    - let des = `dispatch(\"/school/create\")`
+      button.btn( class="btn-primary m-1" onclick= des) Create
     -
         let results = [
             {"school_name" : "Northwest", "school_location" : "Missouri", "school_courses": 12},

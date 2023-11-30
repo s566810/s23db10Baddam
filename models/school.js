@@ -1,7 +1,17 @@
 const mongoose = require("mongoose")
 const schoolSchema = mongoose.Schema({
-school_name: String,
-school_location: String,
-school_courses: Number
+school_name: {
+    type: String,
+    required: true
+},
+school_location: {
+    type: String,
+    required: true
+},
+school_courses: {
+    type: Number,
+    min: 0,
+    max: 4000
+}
 });
 module.exports = mongoose.model("School", schoolSchema)

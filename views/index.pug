@@ -2,9 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to northwest missouri state university,missouri
-  button(type="button", class="btn btn-secondary" onclick="goFaster()") press me
+  p Welcome to Northwest Missouri State University, Missouri
+  block content
+    if (!user)
+      a(href="/login") Login
+      br
+      a(href="/register") Register
+    if (user)
+      p You are currently logged in as #{user.username}
+      a(href="/school") Take me to school
+      br
+      a(href="/logout") Logout 
+      br
+      div
+  button(type="button", class="btn btn-secondary", onclick="goFaster()") press me
   div(id="faster") Increase the speed
+      br
 
   script.
     var mph = 20
